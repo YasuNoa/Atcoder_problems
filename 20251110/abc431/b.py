@@ -20,6 +20,44 @@ for P[i] in input_P :
     
 print(sum(array_parts))
 
-#B問題の模範解答
+#B問題の模範解答。
+X = int(input())
+N = int(input())
+W = list(map(int, input().split()))
+b = [False] * N # b[i] := i 種類目のパーツがついていれば True, そうでなければ False
+Q = int(input())
+for q in range(Q):
+    P = int(input())
+    P -= 1
+    if b[P]: # すでについていたら
+        b[P] = False # 外す
+    else: # ついていなければ
+        b[P] = True # つける
+    # 重さを求める
+    weight = X
+    for i in range(N):
+        if b[i]: # i 番目のパーツがついていれば
+            weight += W[i] # 重さを足す
+    print(weight)
+    # print(sum((w if f else 0 for w, f in zip(W, b)), X))
+    # と書いてもいい
+
+#別解答
+X = int(input())
+N = int(input())
+W = list(map(int, input().split()))
+b = [False] * N # b[i] := i 種類目のパーツがついていれば True, そうでなければ False
+weight = X # 現在の重さ
+Q = int(input())
+for q in range(Q):
+    P = int(input())
+    P -= 1
+    if b[P]: # すでについていたら
+        b[P] = False # 外して
+        weight -= W[P] # 重さも減らす
+    else: # ついていなければ
+        b[P] = True # つけて
+        weight += W[P] # 重さを増やす
+    print(weight)
 
 #かかった時間30分
