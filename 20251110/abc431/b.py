@@ -1,5 +1,8 @@
 #B問題の自分の解答。
 #それぞれ部品をPi番目にして、重さの合計を取ろうとした。今気づいたけど、P[i]は重さの合計でないから不正解。
+#キモとして、p[i]とw[]の関係、Boolを使って、部品のあるなしから計算を加えるとこなど。
+#W[P[i]-1]が、対応関係だったということに気付けるか、だった。
+
 
 X=int(input())
 N=int(input())
@@ -36,7 +39,7 @@ for q in range(Q):
     # 重さを求める
     weight = X
     for i in range(N):
-        if b[i]: # i 番目のパーツがついていれば
+        if b[i]: # =Trueなら重さをつける。
             weight += W[i] # 重さを足す
     print(weight)
     # print(sum((w if f else 0 for w, f in zip(W, b)), X))
@@ -46,6 +49,7 @@ for q in range(Q):
 X = int(input())
 N = int(input())
 W = list(map(int, input().split()))
+#これは重さのList
 b = [False] * N # b[i] := i 種類目のパーツがついていれば True, そうでなければ False
 weight = X # 現在の重さ
 Q = int(input())
@@ -59,5 +63,7 @@ for q in range(Q):
         b[P] = True # つけて
         weight += W[P] # 重さを増やす
     print(weight)
+
+
 
 #かかった時間30分
