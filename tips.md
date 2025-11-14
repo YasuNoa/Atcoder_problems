@@ -6,9 +6,20 @@ a,b=map(int,input().split())
 2:
 list型でinputとっていきたい場合は、mapをlistで囲む。
 
+3:
+Bool型を使うことで判定系の問題を乗り越える。
 
+find=False
 
+for i in range(n):
+    if c==a[1]:
+        find=True
+        break
 
+if found :
+    print("yes")
+else :
+    print("no)
 
 
 
